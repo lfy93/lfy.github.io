@@ -177,10 +177,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-09 18:09:59 / 修改时间：19:02:05" itemprop="dateCreated datePublished" datetime="2020-04-09T18:09:59+08:00">2020-04-09</time>
+              <time title="创建时间：2020-04-09 18:09:59" itemprop="dateCreated datePublished" datetime="2020-04-09T18:09:59+08:00">2020-04-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-13 12:18:59" itemprop="dateModified" datetime="2020-04-13T12:18:59+08:00">2020-04-13</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -211,22 +217,15 @@
 <p>先把这个<a href="https://www.jianshu.com/p/191d1e21f7ed">Markdown语法</a>链接记录一下,免得自己忘记了</p>
 <p>先试下引用，我最近看到一句很喜欢的话，深入我心。孤独是永恒的主题</p>
 <blockquote>
-<p>无论走到哪里，都应该记住，过去都是假的，回忆是一条没有尽头的路，一切以往的春天都不复存在，就连那最坚韧而又狂乱的爱情归根结底也不过是一种转瞬即逝的现实，唯有孤独永恒。—————马尔克斯《百年孤独》</p>
-</blockquote>
-<hr>
-<h2 id="搭建过程，遇到的问题"><a href="#搭建过程，遇到的问题" class="headerlink" title="搭建过程，遇到的问题"></a>搭建过程，遇到的问题</h2><h3 id="先搭架子再找主题"><a href="#先搭架子再找主题" class="headerlink" title="先搭架子再找主题"></a>先搭架子再找主题</h3><p>首先肯定是按照文档无脑cv命令，ok 出了个架子，然后这个默认的主题看起来有点丑，至少我不是很喜欢，怎么办呢，我看到文档有很多主题可以选择，这对于选择困难症的我来说，有点头疼的，然后去google一下，发现next在github上的星星很多，看了一下些案例，简约、大方，还可以！</p>
-<h3 id="引入next"><a href="#引入next" class="headerlink" title="引入next"></a>引入next</h3><p>先出<a href="https://github.com/theme-next/hexo-theme-next">next github地址</a></p>
-<p>我是直接git clone过来，然后在hexo的配置文件 ——config.yml中主题改成next，这个时候你的博客主题应该就成功换好了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https:&#x2F;&#x2F;hexo.io&#x2F;plugins&#x2F;</span><br><span class="line">## Themes: https:&#x2F;&#x2F;hexo.io&#x2F;themes&#x2F;</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-
-<h3 id="好的，问题来了"><a href="#好的，问题来了" class="headerlink" title="好的，问题来了"></a>好的，问题来了</h3><p>由于我自己在next 配置文件中无脑摸索过程中，把一些next集成的功能打开了，但是！ 这个时候我不并知道还需要去引入相应的依赖，因为这些集成的功能中，有些是需要引的，有些是可以直接用的，这一点是我踩坑的重点</p>
-<p>比如这种：<br><code>fancybox: false</code><br>这个时候首页是没有任务问题的，当点进文章详情的时候只有一个null。。。</p>
-<p>这个报的错是 <code>Cannot read property&#39;replace&#39; of null</code> 出现这个问题的时候，去网上找答案，大部分是说的url 配置问题，但是我的url配置是没有问题。。我反复试过了</p>
-<p>在折磨了我几个小时之后，我用了一个很愚蠢的办法，就是重新再搭一个一样的demo，是只配置是原始的，我把两份next 的_congig.yml 进行代码对比，在我感觉有问题的属性上进行还原，终于找到自己作死的地方。。</p>
-<p>禁用掉之后就正常了</p>
-<h3 id="主题优化遇到的问题"><a href="#主题优化遇到的问题" class="headerlink" title="主题优化遇到的问题"></a>主题优化遇到的问题</h3><p>引外部js资源的时候 文档上说是简单js简本代码，可以直接放scripts文件夹中会自动引入，自动是自动引了，这里又有一个很坑的点，因为hexo的环境是nodejs，所以当你的脚本中出现document、window的时候并不能像正常web上运行，会报错未定义，这时候你要把js放到source文件夹中的js里去，然后在layout-&gt;_scripts-&gt;index.swig最后加放代码(记得加花括号，这里写完会出问题，所以我没加),注意相对路径<br><code>- next_js(&#39;xx.js&#39;)</code> </p>
-<p>然后就搞定了，后面看心情还加点功能吧。</p>
-
+<p>无论走到哪里，都应该记住，过去都是假的，回忆是一条没有尽头的路，一切以往的春天都不复存在，就连那最坚韧而又狂乱的爱情归根结底也不过是一种转瞬即逝的现实，唯有孤独永恒。—————马尔克斯《百年孤独》
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/lfy.github.io/2020/bolg-complete/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -259,7 +258,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/lfy.github.io/2020/first-post/" class="post-title-link" itemprop="url">first-post</a>
+            <a href="/lfy.github.io/2020/first-post/" class="post-title-link" itemprop="url">看到一张很全汇总图</a>
         </h2>
 
         <div class="post-meta">
@@ -268,17 +267,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-08 19:22:33 / 修改时间：19:25:33" itemprop="dateCreated datePublished" datetime="2020-04-08T19:22:33+08:00">2020-04-08</time>
+              <time title="创建时间：2020-04-08 19:22:33" itemprop="dateCreated datePublished" datetime="2020-04-08T19:22:33+08:00">2020-04-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-13 11:49:11" itemprop="dateModified" datetime="2020-04-13T11:49:11+08:00">2020-04-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/lfy.github.io/categories/%E6%9D%82%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">杂事</span></a>
+                  <a href="/lfy.github.io/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
                 </span>
             </span>
 
@@ -288,14 +293,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
+              <span>0</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -307,15 +312,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="这是一篇测试文章（没有任何意义）"><a href="#这是一篇测试文章（没有任何意义）" class="headerlink" title="这是一篇测试文章（没有任何意义）"></a>这是一篇测试文章（没有任何意义）</h3><h5 id="这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容"><a href="#这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容" class="headerlink" title="这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容"></a>这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容这是很多内容
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/lfy.github.io/2020/first-post/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p><img src="./images/quan.png" alt="汇总图"></p>
+
       
     </div>
 
@@ -538,13 +536,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">2k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4 分钟</span>
+    <span title="站点阅读时长">1 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
